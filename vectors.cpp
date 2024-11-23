@@ -17,23 +17,27 @@ Vectors::Vectors(double i, double j, double k)
 }
 
 /* Input - output */
-void Vectors::print() const
+void Vectors::print(Vectors v) const
 {
     // Printing a vector as (i, j, k)
-    std::cout << "(" << i << ", " << j << ", " << k << ")\n";
+    std::cout << "(" << v.i << ", " << v.j << ", " << v.k << ")\n";
 }
-void Vectors::print(std::string_view labelResult) const
+void Vectors::print(Vectors v, std::string_view labelResult)
 {
     // Printing a vector with a label as a prefix (for identification)
-    std::cout << labelResult << ": (" << i << ", " << j << ", " << k
+    std::cout << labelResult << ": (" << v.i << ", " << v.j << ", " << v.k
               << ")\n";
 }
-void Vectors::set(int no)
+Vectors Vectors::set(int no)
 {
     // Get user input for a vector
+    double a {};
+    double b {};
+    double c {};
     std::cout << "Enter (i, j, k) for vector #" << no << ": ";
     std::cin.clear();
-    std::cin >> i >> j >> k;
+    std::cin >> a >> b >> c;
+    return Vectors { a, b, c };
 }
 
 /* Vector algebraic operations */
@@ -69,7 +73,7 @@ double Vectors::dot(Vectors v) const
     return (i * v.i) + (j * v.j) + (k * v.k);
 }
 
-bool Vectors::equals(Vectors v) const
+bool Vectors::operator==(Vectors v) const
 {
     // Vector equality checker
     return i == v.i && j == v.j && k == v.k;
@@ -93,12 +97,10 @@ double Vectors::angleD(Vectors v) const
     return angleR(v) * 57.296;
 }
 
-void Vectors::resizeTo(double m)
+Vectors Vectors::resizeTo(double m)
 {
     // Resize the length of a vector
-    i = i * m / mag();
-    j = j * m / mag();
-    k = k * m / mag();
+    return Vectors { i * m / mag(), j * m / mag(), k * m / mag() };
 }
 
 Vectors Vectors::componentAlong(Vectors v)

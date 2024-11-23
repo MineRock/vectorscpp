@@ -11,19 +11,19 @@ private:
 public:
     Vectors();
     Vectors(double i, double j, double k);
-    void print() const;
-    void print(std::string_view labelResult) const;
-    void set(int no);
+    void print(Vectors v) const;
+    static void print(Vectors v, std::string_view labelResult);
+    static Vectors set(int no);
     Vectors operator+(Vectors v);
     Vectors operator-(Vectors v);
     Vectors operator*(Vectors v);
     Vectors mul(double c);
     double dot(Vectors v) const;
-    bool equals(Vectors v) const;
+    bool operator==(Vectors v) const;
     double mag() const;
     double angleR(Vectors v) const;
     double angleD(Vectors v) const;
-    void resizeTo(double m);
+    Vectors resizeTo(double m);
     Vectors componentAlong(Vectors v);
     double distanceBetween(Vectors v);
 };
