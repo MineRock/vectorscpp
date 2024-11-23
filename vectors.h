@@ -19,8 +19,6 @@ public:
     Vectors operator*(Vectors v);
     Vectors mul(double c);
     double dot(Vectors v) const;
-    static Vectors vectorTripleProductL(Vectors v1, Vectors v2, Vectors v3);
-    static Vectors vectorTripleProductR(Vectors v1, Vectors v2, Vectors v3);
     bool equals(Vectors v) const;
     double mag() const;
     double angleR(Vectors v) const;
