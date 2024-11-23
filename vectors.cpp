@@ -1,6 +1,7 @@
 #include "vectors.h"
 #include <iostream>
 #include <string_view>
+#include <cmath>
 
 /* Class constructors */
 Vectors::Vectors()
